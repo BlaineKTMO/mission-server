@@ -11,7 +11,7 @@ bp = Blueprint('api', __name__, url_prefix='/api')
 
 example_mission = {
         "Waypoint": 'Station 1',
-        "Zone": 1,
+        "Zone": "1",
         "Distance": 10
         }
 
