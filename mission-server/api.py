@@ -23,7 +23,10 @@ def send_mission():
 def mission_result():
     if flask.request.method == 'POST':
         global result
-        result = json.loads(request.data)
-
+        result = request.get_json() 
+        
+        response = jsonify(result)
+        response.status_code = 200
+        return response
     else:
         return result
