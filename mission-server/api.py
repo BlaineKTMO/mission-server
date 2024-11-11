@@ -1,6 +1,11 @@
+import flask
+import json
+
 from flask import (
-        Blueprint, jsonify
+        Blueprint, jsonify, request
 )
+
+result = {"result": False}
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 
@@ -12,3 +17,12 @@ example_mission = {
 @bp.route('/mission', methods=['GET'])
 def send_mission():
     return jsonify(example_mission)
+
+@bp.route('/mission_result', methods=['GET', 'POST'])
+def mission_result():
+    if flask.request.method == 'POST':
+        global result
+        result = json.loads(request.data)
+
+    else:
+        return result
